@@ -221,7 +221,6 @@ public class CustomArrayList<T> implements CustomList<T> {
 
         if (capacity != that.capacity) return false;
         if (size != that.size) return false;
-        // Probably incorrect - comparing Object[] arrays with Arrays.equals
         return Arrays.equals(initArray, that.initArray);
     }
 
