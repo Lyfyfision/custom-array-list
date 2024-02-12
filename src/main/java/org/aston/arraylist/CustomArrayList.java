@@ -111,8 +111,9 @@ public class CustomArrayList<T> implements CustomList<T> {
     public void remove(int index) {
         if (index != this.size) {
             shiftElementsOnDelete(index);
+            return;
         }
-        this.initArray[this.size] = null;
+        initArray[index] = null;
         size--;
     }
 
@@ -133,6 +134,15 @@ public class CustomArrayList<T> implements CustomList<T> {
      */
     public int size() {
         return this.size;
+    }
+
+    /**
+     * Returns the number of list's capacity.
+     *
+     * @return current capacity of a list
+     */
+    public int capacity() {
+        return this.capacity;
     }
 
     /**
@@ -168,9 +178,11 @@ public class CustomArrayList<T> implements CustomList<T> {
      * @param index index after which elements are shifted
      */
     private void shiftElementsOnDelete(int index) {
-        for (int i = index; i < this.size; i++) {
+        for (int i = index; i < size - 1; i++) {
             initArray[i] = initArray[i + 1];
         }
+        initArray[size - 1] = null;
+        size--;
     }
 
     /**
@@ -198,5 +210,26 @@ public class CustomArrayList<T> implements CustomList<T> {
                 ", size=" + size +
                 ", initArray=" + Arrays.toString(initArray) +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        CustomArrayList<?> that = (CustomArrayList<?>) o;
+
+        if (capacity != that.capacity) return false;
+        if (size != that.size) return false;
+        // Probably incorrect - comparing Object[] arrays with Arrays.equals
+        return Arrays.equals(initArray, that.initArray);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = capacity;
+        result = 31 * result + size;
+        result = 31 * result + Arrays.hashCode(initArray);
+        return result;
     }
 }

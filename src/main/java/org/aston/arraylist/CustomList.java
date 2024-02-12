@@ -15,4 +15,6 @@ public interface CustomList<T> {
     void clearAll();
     int size();
 
+    int capacity();
+
 }
