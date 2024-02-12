@@ -2,7 +2,6 @@ package org.aston.arraylist;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
 
         CustomArrayList<String> list = new CustomArrayList<>();
         list.add("r");
