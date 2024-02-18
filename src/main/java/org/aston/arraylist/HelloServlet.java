@@ -17,12 +17,6 @@ public class HelloServlet extends HttpServlet {
                 "Hello World" +
                 "Hello World" +
                 "Hello World" +
-                "Hello World" +
-                "" +
-                "Hello World" +
-                "Hello World" +
-                "Hello World" +
-                "Hello World" +
                 "Hello World";
     }
 
