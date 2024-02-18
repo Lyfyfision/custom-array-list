@@ -9,7 +9,7 @@ public class Main {
         list.add("g");
         list.add("m");
         System.out.println(list);
-        list.remove(3);
+        QuickSorting.sort(list);
         System.out.println(list);
 
 
